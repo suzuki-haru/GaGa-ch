@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  
+  <meta charset="UTF-8">
+  <title>我的 YouTube 頻道</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f2f2;
+    }
+    .hero {
+      background-image: url('https://media.discordapp.net/attachments/1164167128287551520/1382589104553721947/2.png?ex=684bb3f1&is=684a6271&hm=11f0a151b1ae8325886b74dbb50cc99afc79b62bec807bd7c80cb65ad5612b5f&=&format=webp&quality=lossless&width=921&height=458'); /* 換成你的封面圖網址 */
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    .hero h1 {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px 40px;
+      border-radius: 12px;
+      font-size: 2.5rem;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+      gap: 30px;
+    }
+
+    .left-section {
+      flex: 1 1 300px;
+      max-width: 350px;
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #eee;
+      margin-bottom: 20px;
+    }
+
+    .channel-name {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    
+    .channel-name {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    
+    .channel-desc {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .right-section {
+      flex: 2 1 600px;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .video-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+    }
+
+    .video-card iframe {
+      width: 100%;
+      height: 180px;
+      border-radius: 6px;
+    }
+
+    .video-title {
+      margin: 10px 0 0;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- 封面區 -->
+  <div class="hero">
+    <h1>🍙 嘎嘎亂烤 GaGa's切り抜き ch. 🥐</h1>
+  </div>
+  
+  <div class="container">
+    <!-- 左側：頭貼 + 頻道資訊 -->
+    <div class="left-section">
+      <img src="https://media.discordapp.net/attachments/1164167128287551520/1382586597123297410/adbe85c6a36e247d.jpg?ex=684bb19b&is=684a601b&hm=c2cf32557aa9cfb7a7d3c61d2c9e8984b6365cc948aeda89e721958f87343b93&=&format=webp&width=533&height=458" alt="頭貼" class="avatar">
+      <div class="channel-name">嘎嘎亂烤 GaGa's切り抜き ch.</div>
+      <div class="channel-id">@Gamers_DDChannel</div>
+      <div class="channel-desc">
+喜歡Hololive而接觸剪輯的單人頻道，以練習日文為主偏向烤一些沒有主題的小日常～</div>
+    </div>
+
+    <!-- 右側：影片展示 -->
+    <div class="right-section">
+      <div class="video-grid" id="videoList">
+        <!-- JavaScript 插入影片 -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 模擬影片資料
+    const videos = [
+      { id: '2z5N6aDl36c', title: '【ホロライブ】最近關係急遽升溫的小粥和千速正悠閒釣魚雜談 路過的風真卻被兩人的車速嚇傻w' },
+      { id: 'eOaLY78iDG0', title: '【ホロライブ】不喊阿雞馬魯就不會阿雞馬魯的礦鎬?!ねね親妳都取了些什麼名字啊w' },
+      { id: 'rKLiPp8ilPo', title: '【ホロライブ合輯】道德崩壞經驗塔！一邊回饋大家一邊被羞辱w只能說不愧是抖Ｍ小粥w' },
+      { id: 'T7a2V5Gd8YY', title: '【ホロライブ】領股息啦！久違再次一起烤棉花糖的老夫老妻組w這一甜又可以活一年了w' },
+      { id: 'O6ui5BD5LV0', title: '【ホロライブ】小粥深夜Minecraft日常 ~ 果然不偷色就全身不舒服w主子只要可愛就夠了' },
+      { id: 'sweMmF-40us', title: '【ホロライブ】進入洞窟後隨即和地鼠們打成一片的沁音w那個日子遺留的恐懼或許將在他們心中永遠揮之不去' },
+    ];
+
+    const videoList = document.getElementById("videoList");
+
+    videos.forEach(video => {
+      const card = document.createElement("div");
+      card.className = "video-card";
+      card.innerHTML = `
+        <iframe src="https://www.youtube.com/embed/${video.id}" frameborder="0" allowfullscreen></iframe>
+        <div class="video-title">${video.title}</div>
+      `;
+      videoList.appendChild(card);
+    });
+  </script>
+</body>
+</html>
